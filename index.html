@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bogey's Barber Shop on the Lakeside — Mendota, IL</title>
+<meta name="description" content="Bogey's Barber Shop on the Lakeside at 1311 Lakewood Dr, Mendota IL. Classic men's cuts, fades, beard work, hot towel shaves. (815) 539-5919.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Karla:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#ffffff;
+  --sand:#e8dcc4;
+  --sand-soft:#f6efde;
+  --lake:#3a6b8a;
+  --lake-deep:#2a526d;
+  --lake-soft:#d8e3eb;
+  --rust:#b85c38;
+  --ink:#1f2a36;
+  --ink-soft:#5a6878;
+  --line:#dccfb8;
+  --font-display:'Abril Fatface',Georgia,serif;
+  --font-body:'Karla',sans-serif;
+}
+body{font-family:var(--font-body);background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;font-weight:400}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s,box-shadow .3s}
+.nav.scrolled{background:rgba(255,255,255,.97);box-shadow:0 2px 16px rgba(58,107,138,.08);backdrop-filter:blur(8px)}
+.brand{font-family:var(--font-display);font-size:1.7rem;color:var(--lake);letter-spacing:.01em;display:flex;align-items:baseline;gap:.4rem}
+.brand small{font-family:var(--font-body);font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft)}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--ink);transition:color .2s}
+.nav-links a:hover{color:var(--rust)}
+.cta{background:var(--lake);color:var(--bg);padding:11px 22px;font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;transition:background .2s,transform .15s;border:none;cursor:pointer;font-family:var(--font-body)}
+.cta:hover{background:var(--lake-deep);transform:translateY(-1px)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.menu-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:4px 0}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;text-align:left;position:relative;padding:7rem 2rem 5rem;background:var(--sand-soft);overflow:hidden}
+.hero::before{content:"";position:absolute;top:0;right:0;bottom:0;width:42%;background:var(--lake);z-index:0}
+.hero::after{content:"";position:absolute;top:0;right:36%;bottom:0;width:8%;background:repeating-linear-gradient(0deg,var(--lake) 0 8px,var(--lake-deep) 8px 16px);z-index:0;opacity:.6}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:3.5rem;align-items:center;width:100%;position:relative;z-index:2}
+.hero-pre{font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rust);font-weight:800;margin-bottom:1.4rem;display:flex;align-items:center;gap:.7rem}
+.hero-pre::before{content:"";display:inline-block;width:32px;height:2px;background:var(--rust)}
+.hero-title{font-family:var(--font-display);font-size:clamp(2.8rem,7.5vw,5.6rem);line-height:1.02;color:var(--ink);margin-bottom:1.4rem;font-weight:normal}
+.hero-title em{font-style:italic;color:var(--lake)}
+.hero-sub{font-size:1.06rem;color:var(--ink-soft);line-height:1.75;max-width:480px;margin-bottom:2.2rem}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:var(--bg);padding:15px 32px;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;transition:all .2s;border:none;cursor:pointer;font-family:var(--font-body)}
+.btn-primary:hover{background:#9a4b2c;transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--ink);color:var(--ink);padding:13px 30px;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;transition:all .2s;background:transparent}
+.btn-outline:hover{background:var(--ink);color:var(--bg)}
+.hero-card{position:relative;aspect-ratio:4/5;background:var(--sand);overflow:hidden;border:6px solid var(--bg);box-shadow:0 18px 50px rgba(31,42,54,.18)}
+.hero-card img{width:100%;height:100%;object-fit:cover}
+.hero-card-stamp{position:absolute;top:1rem;left:1rem;background:var(--bg);color:var(--lake);padding:.5rem .9rem;font-family:var(--font-display);font-size:1rem;letter-spacing:.04em}
+
+/* STATS */
+.stats{background:var(--bg);padding:2.2rem;display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.stat{text-align:center}
+.stat-num{font-family:var(--font-display);font-size:2.4rem;color:var(--lake);display:block;line-height:1}
+.stat-label{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:800;margin-top:.4rem;display:block}
+
+/* SECTION */
+.sec{padding:6rem 2rem}
+.sec-inner{max-width:1080px;margin:0 auto}
+.sec-pre{font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rust);font-weight:800;margin-bottom:.9rem}
+.sec-title{font-family:var(--font-display);font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.05;margin-bottom:1.3rem;color:var(--ink);font-weight:normal}
+.sec-title em{font-style:italic;color:var(--lake)}
+.sec-desc{color:var(--ink-soft);font-size:1.02rem;line-height:1.8;max-width:600px}
+.sec-center{text-align:center}
+.sec-center .sec-desc{margin:0 auto 3rem}
+
+/* ABOUT */
+.about-bg{background:var(--sand-soft)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img{position:relative;aspect-ratio:4/5;overflow:hidden;border:6px solid var(--bg);box-shadow:0 16px 50px rgba(58,107,138,.15)}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-quote{font-family:var(--font-display);font-size:1.5rem;color:var(--rust);border-left:3px solid var(--rust);padding-left:1.2rem;margin-top:1.6rem;line-height:1.3;font-style:italic}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;margin-top:2rem}
+.svc-card{background:var(--bg);border:1px solid var(--line);padding:1.9rem 1.6rem;transition:transform .2s,border-color .2s,box-shadow .2s;position:relative}
+.svc-card:hover{transform:translateY(-4px);border-color:var(--lake);box-shadow:0 12px 32px rgba(58,107,138,.12)}
+.svc-icon{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;background:var(--lake-soft);color:var(--lake);font-size:1.3rem;margin-bottom:.8rem;border-radius:50%}
+.svc-name{font-family:var(--font-display);font-size:1.35rem;margin-bottom:.4rem;color:var(--ink);font-weight:normal}
+.svc-desc{font-size:.92rem;color:var(--ink-soft);line-height:1.65}
+.svc-price{font-family:var(--font-display);font-size:1.2rem;color:var(--rust);margin-top:.9rem;display:inline-block}
+
+/* TESTI */
+.testi-bg{background:var(--lake);color:var(--bg)}
+.testi-bg .sec-pre{color:var(--sand)}
+.testi-bg .sec-title{color:var(--bg)}
+.testi-bg .sec-title em{color:var(--sand)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.6rem;margin-top:2rem}
+.testi-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);padding:2rem 1.7rem;backdrop-filter:blur(4px)}
+.testi-mark{font-family:var(--font-display);font-size:3rem;color:var(--sand);line-height:.6;margin-bottom:.4rem}
+.testi-text{color:var(--bg);font-size:.97rem;line-height:1.7;margin-bottom:1rem;font-weight:400}
+.testi-author{font-size:.7rem;color:var(--sand);font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+
+/* CONTACT */
+.contact-bg{background:var(--sand-soft)}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;max-width:920px;margin:2.5rem auto 0}
+.ci{background:var(--bg);border:1px solid var(--line);padding:1.8rem 1.4rem;text-align:left}
+.ci-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:var(--rust);color:var(--bg);font-size:1.2rem;margin-bottom:.7rem;border-radius:50%}
+.ci-label{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:800;margin-bottom:.4rem}
+.ci-value{font-size:.95rem;color:var(--ink);line-height:1.55;font-weight:600}
+.ci-value a{color:var(--lake);border-bottom:1.5px solid var(--lake)}
+.map-wrap{margin-top:3rem;max-width:920px;margin-left:auto;margin-right:auto;height:320px;border:6px solid var(--bg);box-shadow:0 12px 40px rgba(58,107,138,.18)}
+.map-wrap iframe{width:100%;height:100%;border:0}
+
+/* FOOTER */
+.footer{background:var(--ink);color:var(--bg);padding:3rem 2rem;text-align:center}
+.f-brand{font-family:var(--font-display);font-size:1.85rem;margin-bottom:.5rem;color:var(--sand)}
+.f-tag{color:#a8b5cc;font-size:.86rem;margin-bottom:1rem;letter-spacing:.06em}
+.f-copy{font-size:.72rem;color:#7b88a3;letter-spacing:.06em}
+
+@media(max-width:860px){
+  .nav-links{display:none}
+  .cta{display:none}
+  .menu-toggle{display:block}
+  .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--bg);padding:1.5rem 2rem;gap:1.2rem;box-shadow:0 4px 18px rgba(58,107,138,.1)}
+  .hero{padding:6rem 1.4rem 3rem;min-height:auto}
+  .hero::before{display:none}
+  .hero::after{display:none}
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .about-grid{grid-template-columns:1fr;gap:3rem}
+  .stats{gap:1.4rem;padding:1.4rem 1rem}
+  .sec{padding:4rem 1.2rem}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="#" class="brand">Bogey's <small>on the lakeside</small></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a href="tel:+18155395919" class="cta">(815) 539-5919</a>
+  <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-pre fade-up">Mendota · Lakewood Drive</div>
+      <h1 class="hero-title fade-up d1">A Classic Cut,<br><em>By the Lake.</em></h1>
+      <p class="hero-sub fade-up d2">Bogey's Barber Shop on the Lakeside is Mendota's chair for clean fades, sharp beard work, and the kind of walk-in friendly atmosphere that makes a Friday haircut feel like a tee-time.</p>
+      <div class="hero-btns fade-up d3">
+        <a href="tel:+18155395919" class="btn-primary">Call the Shop</a>
+        <a href="#services" class="btn-outline">Services</a>
+      </div>
+    </div>
+    <div class="hero-card fade-up d2">
+      <!-- REPLACE WITH REAL PHOTO -->
+      <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=800&q=80" alt="Bogey's Barber Shop on the Lakeside">
+      <div class="hero-card-stamp">Est. by the Lake</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat fade-up"><span class="stat-num">★★★★★</span><span class="stat-label">Local Favorite</span></div>
+  <div class="stat fade-up d1"><span class="stat-num">M–F</span><span class="stat-label">Open Weekly</span></div>
+  <div class="stat fade-up d2"><span class="stat-num">Walk-In</span><span class="stat-label">Friendly</span></div>
+  <div class="stat fade-up d3"><span class="stat-num">MENDOTA</span><span class="stat-label">Lakeside Barber</span></div>
+</div>
+
+<!-- ABOUT -->
+<section class="sec about-bg" id="about">
+  <div class="sec-inner about-grid">
+    <div class="about-img fade-up">
+      <!-- REPLACE WITH REAL PHOTO -->
+      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80" alt="Inside Bogey's">
+    </div>
+    <div>
+      <div class="sec-pre fade-up">Our Story</div>
+      <h2 class="sec-title fade-up d1">The Chair By<br>the <em>Lake.</em></h2>
+      <p class="sec-desc fade-up d2">Bogey's Barber Shop on the Lakeside is the Mendota chair for men who want their hair done right. Located on Lakewood Drive, we're a community-focused shop known for clean fades, sharp beard work, and a straightforward walk-in friendly atmosphere.</p>
+      <p class="sec-desc fade-up d3" style="margin-top:1rem">From a classic taper to a full hot-towel shave, we take the time the cut deserves. Bring the kids, bring your dad, bring your buddy from the next fairway over.</p>
+      <div class="about-quote fade-up d4">"Sharp cut, easy chair, lakeside calm."</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="sec-inner">
+    <div class="sec-center">
+      <div class="sec-pre fade-up">Services</div>
+      <h2 class="sec-title fade-up d1">What We <em>Do.</em></h2>
+      <p class="sec-desc fade-up d2">Walk-ins welcome any open day. Call ahead to lock in a chair.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card fade-up"><div class="svc-icon">✂️</div><h3 class="svc-name">Men's Cut</h3><p class="svc-desc">Classic cut, fade, or taper, finished with a lineup.</p><span class="svc-price">Call for pricing</span></div>
+      <div class="svc-card fade-up d1"><div class="svc-icon">🔥</div><h3 class="svc-name">Skin Fade</h3><p class="svc-desc">Razor-blended fade down to the skin.</p><span class="svc-price">Call for pricing</span></div>
+      <div class="svc-card fade-up d2"><div class="svc-icon">🪒</div><h3 class="svc-name">Beard Work</h3><p class="svc-desc">Shaped, edged, and finished sharp.</p><span class="svc-price">Call for pricing</span></div>
+      <div class="svc-card fade-up"><div class="svc-icon">💈</div><h3 class="svc-name">Hot Towel Shave</h3><p class="svc-desc">Straight razor + hot towel. Old-school finish.</p><span class="svc-price">Call for pricing</span></div>
+      <div class="svc-card fade-up d1"><div class="svc-icon">👦</div><h3 class="svc-name">Kids Cut</h3><p class="svc-desc">12 and under. Easy chair, fresh cut.</p><span class="svc-price">Call for pricing</span></div>
+      <div class="svc-card fade-up d2"><div class="svc-icon">⛳</div><h3 class="svc-name">The Bogey</h3><p class="svc-desc">Cut + beard + hot lather cleanup. The full deal.</p><span class="svc-price">Call for pricing</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec testi-bg" id="reviews">
+  <div class="sec-inner">
+    <div class="sec-center">
+      <div class="sec-pre fade-up">Reviews</div>
+      <h2 class="sec-title fade-up d1">Word on the <em>Lake.</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up"><div class="testi-mark">"</div><p class="testi-text">Cleanest fade in Mendota. Walk-in friendly, fast service, and the cut holds for weeks.</p><div class="testi-author">— Lakeside Regular</div></div>
+      <div class="testi-card fade-up d1"><div class="testi-mark">"</div><p class="testi-text">Bogey's is the chair my whole family goes to. Honest barber, honest price, honest cut.</p><div class="testi-author">— Mendota Family</div></div>
+      <div class="testi-card fade-up d2"><div class="testi-mark">"</div><p class="testi-text">The hot towel shave is the best deal in town. Sharp work, easy conversation, perfect Friday afternoon.</p><div class="testi-author">— Out-of-Towner</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec contact-bg" id="visit">
+  <div class="sec-inner">
+    <div class="sec-center">
+      <div class="sec-pre fade-up">Visit</div>
+      <h2 class="sec-title fade-up d1">Come Down to the <em>Lakeside.</em></h2>
+      <p class="sec-desc fade-up d2" style="margin:0 auto;max-width:520px">Lakewood Drive, Mendota. Free parking, fresh cut.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="ci fade-up"><div class="ci-icon">📍</div><div class="ci-label">Address</div><div class="ci-value">1311 Lakewood Dr<br>Mendota, IL 61342</div></div>
+      <div class="ci fade-up d1"><div class="ci-icon">📞</div><div class="ci-label">Phone</div><div class="ci-value"><a href="tel:+18155395919">(815) 539-5919</a></div></div>
+      <div class="ci fade-up d2"><div class="ci-icon">🕐</div><div class="ci-label">Hours</div><div class="ci-value" style="font-size:.86rem;font-weight:500">Mon 8am-6pm<br>Tue-Thu 8am-5pm<br>Fri 8am-6pm<br>Sat-Sun Closed</div></div>
+      <div class="ci fade-up d3"><div class="ci-icon">💵</div><div class="ci-label">Payment</div><div class="ci-value" style="font-size:.88rem;font-weight:500">Cash &amp; cards<br>Walk-ins welcome</div></div>
+    </div>
+    <div class="map-wrap fade-up"><iframe src="https://www.google.com/maps?q=1311+Lakewood+Dr,+Mendota,+IL+61342&output=embed" allowfullscreen loading="lazy"></iframe></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="f-brand">Bogey's on the Lakeside</div>
+  <div class="f-tag">Mendota's Lakeside Barber · 1311 Lakewood Dr</div>
+  <div class="f-copy">© 2026 Bogey's Barber Shop · Mendota, IL</div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40)});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var h=this.getAttribute('href');if(h==='#')return;var t=document.querySelector(h);if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('navLinks').classList.remove('open')}})});
+var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-up').forEach(function(el){o.observe(el)});
+</script>
+
+</body>
+</html>
